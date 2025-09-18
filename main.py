@@ -17,12 +17,13 @@ data_list = [
     for d in [line.split(",")]
 ]
 
-print(data_list)
-print(type(data_list))  
+#print(data_list)
+#print(type(data_list))  
 
 
-
+print("welcome to pokeman")
 def getnewPokeman():
+    
     width=float(input("Enter the width of the pokeman: "))
     height=float(input("Enter the height of the pokeman: "))
     return(width,height)
