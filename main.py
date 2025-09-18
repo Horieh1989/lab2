@@ -31,7 +31,7 @@ def distance(p, q): #https://docs.python.org/3/library/math.html#math.dist
     return mas.sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))
 
     
-getnewPokeman()
+
 sighn={0:"pichu",1:"pikachu"}  
 newpokman=getnewPokeman()
 
