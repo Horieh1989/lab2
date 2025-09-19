@@ -28,10 +28,24 @@ print("welcome to pokeman")
     
     
 def getnewPokeman():
+    while True:
+        try: #for number and negative number
+            width_number = float(input("Enter the width of the pokeman: "))
+            height_number = float(input("Enter the height of the pokeman: "))
+            if width_number<=0 and height_number <=0:#for negative number
+               print("you should add a positive number")
+               continue
+               
+           
+           
+            return (width_number, height_number)
+            
+        except ValueError:
+            print("Please enter valid positive numbers for width and height.")
     
-    width=float(input("Enter the width of the pokeman: "))
-    height=float(input("Enter the height of the pokeman: "))
-    return(width,height)
+         
+         
+  
 
 def distance(p, q): #https://docs.python.org/3/library/math.html#math.dist
     return mas.sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))
