@@ -2,7 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math as mas
 
-
+max_ask=3
+Try=0
 path=r"C:\Users\horie\OneDrive\Desktop\IT Höskolan projects\projects instructions\lab2\datapoints.txt"
 with open(path, "r") as file: #https://docs.python.org/3/library/functions.html#open
     data=file.read()
@@ -23,6 +24,9 @@ print(type(data_list))
 
 
 print("welcome to pokeman")
+
+    
+    
 def getnewPokeman():
     
     width=float(input("Enter the width of the pokeman: "))
@@ -35,11 +39,22 @@ def distance(p, q): #https://docs.python.org/3/library/math.html#math.dist
     
 
 sighn={0:"pichu",1:"pikachu"}  
-newpokman=getnewPokeman()
+
+while max_ask>=Try:
+  newpokman=getnewPokeman()
 
 
 # Now calculate the closest point to the new Pokémon
-closestto = min(data_list, key=lambda d: distance(d[:2], newpokman))
+  closestto = min(data_list, key=lambda d: distance(d[:2], newpokman))
 
-print(newpokman)
-print(sighn[closestto[2]])
+  print(newpokman)
+  print("cosest pokeman",sighn[closestto[2]])
+  Try+=1
+  
+  askAgain=("do you want to try again? ").strip().lower()
+  if askAgain=="no":
+     print("you go out of program")
+     break
+else:
+    print("you have done 3 try!")
+    

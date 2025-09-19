@@ -8,11 +8,4 @@ with open(path, "r") as file: #https://docs.python.org/3/library/functions.html#
 lines = data.strip().split("\n")[1:] # i could use [1: ] or after line
 #lines.pop(0)
 
-data_list = [
-    [float(d[0]), float(d[1]), int(d[2])]
-    for line in lines
-    for d in [line.split(",")]
-]
-
-print(data_list)
-print(type(data_list))  
+print(lines)
