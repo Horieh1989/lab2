@@ -50,11 +50,13 @@ while max_ask>=Try:
   print(newpokman)
   print("cosest pokeman",sighn[closestto[2]])
   Try+=1
+  if max_ask>=Try:
   
-  askAgain=("do you want to try again? ").strip().lower()
+   askAgain=input("do you want to try again? ").strip().lower()
   if askAgain=="no":
      print("you go out of program")
      break
+     
 else:
     print("you have done 3 try!")
     
