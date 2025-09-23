@@ -10,7 +10,7 @@ with open(path, "r") as file: #https://docs.python.org/3/library/functions.html#
     print(type(data))
     
     
-lines = data.strip().split("\n")[1:] # i could use [1: ] or after line
+lines = data.strip().split("\n")[1:] # i could use [1: ] or after line #https://docs.python.org/3/library/stdtypes.html#str.strip
 #lines.pop(0)
 
 data_list = [
@@ -40,37 +40,73 @@ def getnewPokeman():
            
             return (width_number, height_number)
             
-        except ValueError:
+        except ValueError:#https://docs.python.org/3/tutorial/errors.html#handling-exceptions
             print("Please enter valid positive numbers for width and height.")
     
          
          
   
 
-def distance(p, q): #https://docs.python.org/3/library/math.html#math.dist
-    return mas.sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))
-
+#def distance(p, q): #https://docs.python.org/3/library/math.html#math.dist
+    #return mas.sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))
+#def distance1(p,q):
+     #return mas.dis(p,q)
     
 
 sighn={0:"pichu",1:"pikachu"}  
 
+k=15#how many nearest neighbor
+
+weightandhight_arry=np.array([d[:2]for d in data_list])
+labels=np.array([d[2] for d in  data_list])
+
+
 while max_ask>=Try:
   newpokman=getnewPokeman()
-
-
+  
+  
 # Now calculate the closest point to the new Pokémon
-  closestto = min(data_list, key=lambda d: distance(d[:2], newpokman))
+  #closestto = min(data_list, key=lambda d: distance(d[:2], newpokman))
+  #print(newpokman)
+  #print("cosest pokeman",sighn[closestto[2]])
+  
+  distances=np.sqrt(np.sum((weightandhight_arry -  newpokman)**2, axis=1))#sum each row axis=1
+  nearest= distances.argsort()[:k]
+  
+  votes={0:0,1:0}
+  for idx in nearest :
+      votes[labels[idx]]+=1
+      
+  
+  predicted_label = max(votes, key=votes.get)
+  print(f"\nNew Pokémon size: {newpokman}")
+  print(f"Predicted Pokémon: {sighn[predicted_label]}")
 
-  print(newpokman)
-  print("cosest pokeman",sighn[closestto[2]])
+
+
+
   Try+=1
   if max_ask>=Try:
-  
-   askAgain=input("do you want to try again? ").strip().lower()
-  if askAgain=="no":
-     print("you go out of program")
-     break
+      while True:
+        askAgain=input("do you want to try again? ").strip().lower()
+        if askAgain=="yes":
+            print("you must enter the right digit")
+            break
+        elif askAgain=="no":
+           print("you go out of program")
+           exit()
+        else:
+            print("invalid try again: ")
      
 else:
     print("you have done 3 try!")
     
+    
+#def plot()
+
+
+#plt.title("pokemans sizes")
+#plt.xlabel("width(cm)")
+#plt.ylabel("height (cm)")
+#plt.show()
+
