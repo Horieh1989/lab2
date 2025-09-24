@@ -29,14 +29,35 @@ pikachu=[d for d in data if d[2]==1]
 traindata=pichu[:50]+pikachu[:50]
 testdata=pichu[50:75]+pikachu[50:75]
 
-random.shuffle(traindata)# to mix orders shuffel
-random.shuffle(testdata)
+
+np.random.shuffle(traindata)# to mix orders shuffel
+np.random.shuffle(testdata)#we can use np insteAD OF NORMAL BUT WE SHOULD CHANGE TO NP ARRAY FIRST
 
 print (len(traindata))
 print(len(testdata))
 
 ##### calculate accuracy
+#convertdata to array
+
+trainwh=np.array([d[:2] for d in traindata])
+trainlable=np.array([d[2]for d in traindata])
 
 k=5
 lable={0:"pichu", 1:pikachu }
 
+trulabels=np.array([d[2] for d in testdata])
+predictlabelslist=[]
+
+for points in testdata:
+    distance=np.sqrt(np.sum((trainwh -points[:2]) **2,axis=1))
+    nearestpoin=distance.argsort()[:k]
+    
+    
+    #majority vote
+    votes={0:0,1:0}
+    for idx in nearestpoin:
+      votes[trainlable[idx]]+=1
+      
+      
+      
+      
