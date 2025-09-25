@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import math as mas
+import math 
+import matplotlib.pyplot as plt
 
 max_ask=3
 Try=0
@@ -55,13 +56,13 @@ def getnewPokeman():
 
 sighn={0:"pichu",1:"pikachu"}  
 
-k=15#how many nearest neighbor
+k=15  #how many nearest neighbor
 
 weightandhight_arry=np.array([d[:2]for d in data_list])
 labels=np.array([d[2] for d in  data_list])
 
 
-while max_ask>=Try:
+while max_ask>Try:
   newpokman=getnewPokeman()
   
   
@@ -102,11 +103,18 @@ else:
     print("you have done 3 try!")
     
     
-#def plot()
 
 
-#plt.title("pokemans sizes")
-#plt.xlabel("width(cm)")
-#plt.ylabel("height (cm)")
-#plt.show()
+pichup= weightandhight_arry[labels==0]
+pikachup= weightandhight_arry[labels==1]
+
+
+plt.scatter(pichup[:,1],pichup[:,1],color="blue", labels="pichu")
+plt.scatter(pikachup[:,0],pikachup[:1], color="red" ,labels="pikachu")
+plt.scatter(newpokman[0],newpokman[1]color="pink", )
+plt.plot(pichup,pikachup)
+plt.title("pokemans sizes")
+plt.xlabel("pichup:" [pichup])
+plt.ylabel(pikachup)
+plt.show()
 
