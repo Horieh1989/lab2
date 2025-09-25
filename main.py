@@ -1,14 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
 import matplotlib.pyplot as plt
-
-
-
 
 
 max_ask=3
 Try=0
+
+
 path=r"C:\Users\horie\OneDrive\Desktop\IT Höskolan projects\projects instructions\lab2\datapoints.txt"
 with open(path, "r") as file: #https://docs.python.org/3/library/functions.html#open
     data=file.read()
@@ -49,14 +47,7 @@ def getnewPokeman():
             print("Please enter valid positive numbers for width and height.")
     
          
-         
-  
-
-#def distance(p, q): #https://docs.python.org/3/library/math.html#math.dist
-    #return mas.sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))
-#def distance1(p,q):
-     #return mas.dis(p,q)
-    
+ 
 
 sighn={0:"pichu",1:"pikachu"}  
 
@@ -69,12 +60,7 @@ labels=np.array([d[2] for d in  data_list])
 while max_ask>Try:
   newpokman=getnewPokeman()
   
-  
-# Now calculate the closest point to the new Pokémon
-  #closestto = min(data_list, key=lambda d: distance(d[:2], newpokman))
-  #print(newpokman)
-  #print("cosest pokeman",sighn[closestto[2]])
-  
+#https://docs.python.org/3/library/math.html#math.dist
   distances=np.sqrt(np.sum((weightandhight_arry -  newpokman)**2, axis=1))#sum each row axis=1
   nearest= distances.argsort()[:k]
   
@@ -96,19 +82,11 @@ while max_ask>Try:
   plt.scatter(pikachup[:,0],pikachup[:,1], color="red" ,label="pikachu")
   #new pokeman
   plt.scatter(newpokman[0],newpokman[1],color="pink",marker="*",s=100,label="newpokman" )
-
-
-
-
   plt.title("pokemans and new pokeman")
   plt.xlabel("width")
   plt.ylabel("height")
   plt.show()
-
   input("Press Enter to exit...")
-
-
-
 
   Try+=1
   if max_ask>=Try:
