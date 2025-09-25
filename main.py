@@ -1,17 +1,21 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.pyplot as plt
+import urllib.request
 
 
 max_ask=3
 Try=0
 
 
-path=r"C:\Users\horie\OneDrive\Desktop\IT Höskolan projects\projects instructions\lab2\datapoints.txt"
-with open(path, "r") as file: #https://docs.python.org/3/library/functions.html#open
-    data=file.read()
+
+# GitHub raw URL
+url = "https://raw.githubusercontent.com/Horieh1989/lab2/refs/heads/main/datapoints.txt"
+
+# Open and read the file from the internet
+with urllib.request.urlopen(url) as response:
+    data = response.read().decode("utf-8")  # Convert bytes → string
     print(type(data))
-    
     
 lines = data.strip().split("\n")[1:] # i could use [1: ] or after line #https://docs.python.org/3/library/stdtypes.html#str.strip
 #lines.pop(0)
