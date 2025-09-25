@@ -1,9 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import math 
+
 import matplotlib.pyplot as plt
-import matplotlib
-matplotlib.use('TkAgg')  # or 'Qt5Agg' depending on your system
+
+
 
 
 
@@ -86,6 +86,26 @@ while max_ask>Try:
   predicted_label = max(votes, key=votes.get)
   print(f"\nNew Pokémon size: {newpokman}")
   print(f"Predicted Pokémon: {sighn[predicted_label]}")
+  
+  #preper the array for plot
+  pichup= weightandhight_arry[labels==0]
+  pikachup= weightandhight_arry[labels==1]
+
+  #make the plot nam weight and hight and lable
+  plt.scatter(pichup[:,0],pichup[:,1],color="blue", label="pichu")
+  plt.scatter(pikachup[:,0],pikachup[:,1], color="red" ,label="pikachu")
+  #new pokeman
+  plt.scatter(newpokman[0],newpokman[1],color="pink",marker="*",s=100,label="newpokman" )
+
+
+
+
+  plt.title("pokemans and new pokeman")
+  plt.xlabel("width")
+  plt.ylabel("height")
+  plt.show()
+
+  input("Press Enter to exit...")
 
 
 
@@ -108,22 +128,3 @@ else:
     
     
 
-#preper the array for plot
-pichup= weightandhight_arry[labels==0]
-pikachup= weightandhight_arry[labels==1]
-
-#make the plot nam weight and hight and lable
-plt.scatter(pichup[:,0],pichup[:,1],color="blue", label="pichu")
-plt.scatter(pikachup[:,0],pikachup[:1], color="red" ,label="pikachu")
-#new pokeman
-plt.scatter(newpokman[0],newpokman[1],color="pink",marker="*",s=100,label="newpokman" )
-
-
-
-
-plt.title("pokemans and new pokeman")
-plt.xlabel("width")
-plt.ylabel("height")
-plt.show()
-
-input("Press Enter to exit...")
