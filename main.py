@@ -2,6 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math 
 import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('TkAgg')  # or 'Qt5Agg' depending on your system
+
+
 
 max_ask=3
 Try=0
