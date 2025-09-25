@@ -104,17 +104,22 @@ else:
     
     
 
-
+#preper the array for plot
 pichup= weightandhight_arry[labels==0]
 pikachup= weightandhight_arry[labels==1]
 
+#make the plot nam weight and hight and lable
+plt.scatter(pichup[:,0],pichup[:,1],color="blue", label="pichu")
+plt.scatter(pikachup[:,0],pikachup[:1], color="red" ,label="pikachu")
+#new pokeman
+plt.scatter(newpokman[0],newpokman[1],color="pink",marker="*",s=100,label="newpokman" )
 
-plt.scatter(pichup[:,1],pichup[:,1],color="blue", labels="pichu")
-plt.scatter(pikachup[:,0],pikachup[:1], color="red" ,labels="pikachu")
-plt.scatter(newpokman[0],newpokman[1]color="pink", )
-plt.plot(pichup,pikachup)
-plt.title("pokemans sizes")
-plt.xlabel("pichup:" [pichup])
-plt.ylabel(pikachup)
+
+
+
+plt.title("pokemans and new pokeman")
+plt.xlabel("width")
+plt.ylabel("height")
 plt.show()
 
+input("Press Enter to exit...")
